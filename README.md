@@ -8,4 +8,4 @@ Using PyGame to create a FlappyCat game based on FlappyBird.
 ![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/5f092994-46c0-4070-82de-b919adfbc718)
 
 ## Appendix
-Images of cats are drew by myself. The origin drawings are in the *pixel* folder.
+Images of cats are drawn by myself. The origin drawings are in the *pixel* folder.
