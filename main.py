@@ -1,6 +1,5 @@
 import pygame
 from pygame import mixer
-from pygame.locals import *
 import random
 
 #initialize pygame
@@ -80,7 +79,7 @@ class Cat(pygame.sprite.Sprite):
 
     def update(self):
 
-        if flying == True:
+        if flying:
             #gravity
             self.vel += 0.5
             if self.vel > 7:
@@ -88,7 +87,7 @@ class Cat(pygame.sprite.Sprite):
             if self.rect.bottom < 380:
                 self.rect.y += int(self.vel)
 
-        if game_over == False:
+        if not game_over:
             #jump
             if pygame.mouse.get_pressed()[0] == 1 and self.clicked == False:
                 self.clicked = True
@@ -183,7 +182,7 @@ while run:
                 and cat_group.sprites()[0].rect.right < pipe_group.sprites()[0].rect.right \
                 and pass_pipe == False:
             pass_pipe = True
-        if pass_pipe == True:
+        if pass_pipe:
             if cat_group.sprites()[0].rect.left > pipe_group.sprites()[0].rect.right:
                 score += 1
                 print(score)  # Debugging statement to check if the score is being updated
@@ -202,7 +201,7 @@ while run:
         game_over = True
         flying = False
 
-    if game_over == False and flying == True:
+    if not game_over and flying:
         #generate new pipes
         time_now = pygame.time.get_ticks()
         if time_now - last_pipe > pipe_frequency: #free to create an extra pipe
@@ -222,15 +221,15 @@ while run:
 
 
     #check for game over and reset
-    if game_over == True:
-        if button.draw() == True:
+    if game_over:
+        if button.draw():
             game_over = False
             score = reset_game()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-        if event.type == pygame.MOUSEBUTTONDOWN and flying == False and game_over == False:
+        if event.type == pygame.MOUSEBUTTONDOWN and not flying and not game_over:
             flying = True
 
     pygame.display.update()
