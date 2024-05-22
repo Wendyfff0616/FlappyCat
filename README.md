@@ -1,12 +1,6 @@
 # FlappyCat
 Using PyGame to create a FlappyCat game based on FlappyBird.
 
-## Click "Get Ready" to play
-![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/359970c4-1bfe-4762-af76-f397abcba184)
-
-## Image of the game
-![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/5f092994-46c0-4070-82de-b919adfbc718)
-
 ## Update
 1. Drew outlines for the scores.
 2. Add two new features named "fresh flower" and "bad flower"; add sounds for both of them.
@@ -17,6 +11,13 @@ Using PyGame to create a FlappyCat game based on FlappyBird.
    
 ![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/94989063-c838-4be6-ab4a-6ff0aefde661)
 
+## Click "Get Ready" to play
+
+![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/359970c4-1bfe-4762-af76-f397abcba184)
+
+## Image of the game
+
+![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/5f092994-46c0-4070-82de-b919adfbc718)
+
 ## Appendix
 Images of cats are drawn by myself. The origin drawings are in the *pixel* folder.
->>>>>>> f23e6d7090231b21d469b76011d1492b3476cc96
