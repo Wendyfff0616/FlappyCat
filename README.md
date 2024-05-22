@@ -13,6 +13,7 @@ Using Pygame to create a FlappyCat game based on FlappyBird.
    1. If the cat get the fresh flower, `score` += 10, and `number of flowers` += 1. 
    2. If the cat get the bad flower, `score` -= 5, and `number of flowers` -= 1.
    3. You can use three flowers for one revive chance.
+      
 ![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/bfddfe39-6bc4-46bf-948b-2d253705d14d)
    
 ## Appendix
