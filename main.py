@@ -52,6 +52,9 @@ score = 0
 number_of_flowers = 0
 pass_pipe = False
 revive_chance = 0
+invincible = False
+invincible_start_time = 0
+invincible_duration = 2000  # 2 seconds in milliseconds
 
 #load icon
 icon = pygame.image.load("images/icon.png")
@@ -97,12 +100,20 @@ def reset_game():
     score = 0
     return score
 
+def check_revival():
+    #check if the player has enough fresh flowers for revival
+    if number_of_flowers >= 1:
+        return True
+    return False
+
 def revive_cat():
-    flappy.rect.x = 200
+    #revive the cat by setting game_over to False and flying to True
+    global game_over, flying, invincible, invincible_start_time
+    game_over = False
+    flying = True
+    invincible = True
+    invincible_start_time = pygame.time.get_ticks()
     flappy.rect.y = int(screen_height / 2)
-    flappy.vel = 0
-    flappy.clicked = False
-    return False  # Set game_over to False
 
 class Cat(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -277,17 +288,15 @@ while run:
     #draw the score
     draw_text_white(str(score), font_big, brown, screen_width//2 - 10, 50)
 
-    #draw the number of good flowers
-    #a bad flower cancels out a good flower
+    #draw the number of fresh flowers
+    #a bad flower cancels out a fresh flower
     screen.blit(flower_img, (600, 55))
     draw_text_blue(str(number_of_flowers), font_small, white, 650, 60)
 
-    #every three good flowers give you a chance of resurrection
-    revive_chance = number_of_flowers // 3
-
-    #look for collision
-    if pygame.sprite.groupcollide(cat_group, pipe_group, False, False)\
-            or flappy.rect.top < 0:
+    #look for collision, but skip it if invincible
+    if not invincible and \
+            (pygame.sprite.groupcollide(cat_group, pipe_group, False, False) or \
+             flappy.rect.top < 0):
         game_over = True
 
     #check if cat has hit the base
@@ -327,19 +336,20 @@ while run:
         if abs(base_scroll) > 1673:
             base_scroll = 0
 
-
         pipe_group.update()
         flower_group.update()
         bad_flower_group.update()
 
+    #check for invincibility duration
+    if invincible and pygame.time.get_ticks() - invincible_start_time > invincible_duration:
+        invincible = False
+
     # check for game over and reset
     if game_over:
-        revive_available = revive_chance > 0
-        # check if user has resurrection chances
-        if revive_available:
+        if check_revival():
             if revive_button.draw():
-                game_over = revive_cat()  #revive the cat and set game_over to False
-                number_of_flowers -= 3  #use three flowers for one revive chance
+                revive_cat()
+                number_of_flowers -= 1 #use one fresh flower to revive the cat
         else:
             if restart_button.draw():
                 game_over = False
