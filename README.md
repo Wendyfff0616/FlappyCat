@@ -3,7 +3,9 @@ Using PyGame to create a FlappyCat game based on FlappyBird.
 
 ## Update(5.23)
 1. Add a 2-second invincibility period after revival where the cat is immune to collisions with pipes.
-2. 
+
+![image](https://github.com/Wendyfff0616/FlappyCat/assets/169350460/5032e9ac-44fd-4889-b88f-7594c9db6973)
+   
 ## Update(5.22)
 1. Draw outlines for the scores.
 2. Add two new features named "fresh flower" and "bad flower"; add sounds for both of them.
